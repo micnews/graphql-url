@@ -34,6 +34,9 @@ test('GraphQLRelativeUrl as field', (t) => {
   const query3 = `{
     foo(arg: "not valid url")
   }`;
+  const query4 = `{
+    foo(arg: "//foo.com/bar")
+  }`;
 
   const expectedData = {
     foo: 'does-not-matter'
@@ -48,6 +51,9 @@ test('GraphQLRelativeUrl as field', (t) => {
       t.is(errors && errors.length, 1, '1 error');
     }),
     graphql(schema, query3).then(({ errors }) => {
+      t.is(errors && errors.length, 1, '1 error');
+    }),
+    graphql(schema, query4).then(({ errors }) => {
       t.is(errors && errors.length, 1, '1 error');
     })
   ]);

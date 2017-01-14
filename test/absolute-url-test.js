@@ -11,7 +11,7 @@ test('GraphQLAbsoluteUrl as field', (t) => {
         foo: {
           type: GraphQLString,
           resolve(_, { arg }) {
-            t.is(arg, 'https://foo.com/bar', 'correct arg');
+            t.true(arg === 'https://foo.com/bar' || arg === '//foo.com/bar', 'correct arg');
             return 'does-not-matter';
           },
           args: {
@@ -25,7 +25,8 @@ test('GraphQLAbsoluteUrl as field', (t) => {
   });
 
   const query1 = `{
-    foo(arg: "https://foo.com/bar")
+    withProto: foo(arg: "https://foo.com/bar")
+    withoutProto: foo(arg: "//foo.com/bar")
   }`;
 
   const query2 = `{
@@ -36,7 +37,8 @@ test('GraphQLAbsoluteUrl as field', (t) => {
   }`;
 
   const expectedData = {
-    foo: 'does-not-matter'
+    withProto: 'does-not-matter',
+    withoutProto: 'does-not-matter'
   };
 
   return Promise.all([
