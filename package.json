@@ -1,0 +1,35 @@
+{
+  "name": "graphql-url",
+  "version": "0.0.0",
+  "description": "A url scalar for graphql",
+  "main": "index.js",
+  "scripts": {
+    "test": "nyc node test.js && miclint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/micnews/graphql-url.git"
+  },
+  "keywords": [
+    "graphql"
+  ],
+  "author": "mic.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/micnews/graphql-url/issues"
+  },
+  "homepage": "https://github.com/micnews/graphql-url#readme",
+  "dependencies": {
+    "assert-err": "^1.1.0",
+    "is-url-superb": "^2.0.0"
+  },
+  "devDependencies": {
+    "graphql": "^0.6.2 || ^0.7.0 || ^0.8.0",
+    "miclint": "^3.0.0",
+    "nyc": "^10.0.0",
+    "tapava": "^2.3.0"
+  },
+  "peerDependencies": {
+    "graphql": "^0.6.2 || ^0.7.0 || ^0.8.0"
+  }
+}
