@@ -2,9 +2,10 @@
   "name": "graphql-url",
   "version": "0.0.0",
   "description": "A url scalar for graphql",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "test": "nyc node test.js && miclint"
+    "prepublish": "rm -rf dist && mkdir -p dist && babel lib --out-dir dist",
+    "test": "nyc babel-tape-runner test.js && miclint"
   },
   "repository": {
     "type": "git",
@@ -24,6 +25,9 @@
     "is-url-superb": "^2.0.0"
   },
   "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-preset-es2015": "^6.18.0",
+    "babel-tape-runner": "^2.0.1",
     "graphql": "^0.6.2 || ^0.7.0 || ^0.8.0",
     "miclint": "^3.0.0",
     "nyc": "^10.0.0",

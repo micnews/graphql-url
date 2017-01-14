@@ -1,7 +1,7 @@
-const test = require('tapava'); // eslint-disable-line
-const { graphql, GraphQLSchema, GraphQLObjectType, GraphQLString } = require('graphql');
+import test from 'tapava'; // eslint-disable-line
+import { graphql, GraphQLSchema, GraphQLObjectType, GraphQLString } from 'graphql';
 
-const GraphqlUrl = require('./');
+import GraphqlUrl from './lib';
 
 test('GraphqlUrl as field', (t) => {
   const schema = new GraphQLSchema({
