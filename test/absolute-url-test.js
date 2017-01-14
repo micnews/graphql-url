@@ -1,9 +1,9 @@
-import test from 'tapava'; // eslint-disable-line
+import test from 'tapava';
 import { graphql, GraphQLSchema, GraphQLObjectType, GraphQLString } from 'graphql';
 
-import GraphqlUrl from './lib';
+import { GraphQLAbsoluteUrl } from '../lib';
 
-test('GraphqlUrl as field', (t) => {
+test('GraphQLAbsoluteUrl as field', (t) => {
   const schema = new GraphQLSchema({
     query: new GraphQLObjectType({
       name: 'RootQueryType',
@@ -16,7 +16,7 @@ test('GraphqlUrl as field', (t) => {
           },
           args: {
             arg: {
-              type: GraphqlUrl
+              type: GraphQLAbsoluteUrl
             }
           }
         }
@@ -53,25 +53,25 @@ test('GraphqlUrl as field', (t) => {
   ]);
 });
 
-test('GraphqlUrl as resolved value', (t) => {
+test('GraphQLAbsoluteUrl as resolved value', (t) => {
   const schema = new GraphQLSchema({
     query: new GraphQLObjectType({
       name: 'RootQueryType',
       fields: {
         valid: {
-          type: GraphqlUrl,
+          type: GraphQLAbsoluteUrl,
           resolve() {
             return 'https://foo.com/bar';
           }
         },
         badType: {
-          type: GraphqlUrl,
+          type: GraphQLAbsoluteUrl,
           resolve() {
             return 123;
           }
         },
         invalidUrl: {
-          type: GraphqlUrl,
+          type: GraphQLAbsoluteUrl,
           resolve() {
             return 'not valid url';
           }
@@ -109,7 +109,7 @@ test('GraphqlUrl as resolved value', (t) => {
   ]);
 });
 
-test('GraphqlUrl as variables', (t) => {
+test('GraphQLAbsoluteUrl as variables', (t) => {
   const schema = new GraphQLSchema({
     query: new GraphQLObjectType({
       name: 'RootQueryType',
@@ -122,7 +122,7 @@ test('GraphqlUrl as variables', (t) => {
           },
           args: {
             arg: {
-              type: GraphqlUrl
+              type: GraphQLAbsoluteUrl
             }
           }
         }
@@ -130,7 +130,7 @@ test('GraphqlUrl as variables', (t) => {
     })
   });
 
-  const query = `query Foo($arg: Url!) {
+  const query = `query Foo($arg: AbsoluteUrl!) {
     foo(arg: $arg)
   }`;
 
