@@ -5,7 +5,7 @@
 ## Installation
 
 ```shell
-yarn install graphql-rul [--dev]
+yarn install graphql-url [--dev]
 ```
 
 ## Usage
