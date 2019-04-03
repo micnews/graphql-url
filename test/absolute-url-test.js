@@ -132,7 +132,7 @@ test('GraphQLAbsoluteUrl as variables', (t) => {
     })
   });
 
-  const query = `query Foo($arg: AbsoluteUrl!) {
+  const query = `query Foo($arg: GraphQLAbsoluteUrl!) {
     foo(arg: $arg)
   }`;
 
